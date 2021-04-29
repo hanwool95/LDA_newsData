@@ -11,7 +11,7 @@ from gensim.test.utils import datapath
 
 print("loading token_words.csv")
 data_word = []
-with codecs.open('noun_token_words.csv', 'r') as f:
+with codecs.open('noun_token_words_4.csv', 'r') as f:
     rdr = csv.reader(f)
     next(rdr)
     for i, line in enumerate(rdr):
@@ -20,14 +20,14 @@ with codecs.open('noun_token_words.csv', 'r') as f:
 
 
 id2word=corpora.Dictionary(data_word)
-id2word.filter_extremes(no_below = 20) #20회 이하로 등장한 단어는 삭제
+id2word.filter_extremes(no_below = 10) #10회 이하로 등장한 단어는 삭제
 texts = data_word
 corpus=[id2word.doc2bow(text) for text in texts]
 print(corpus[1])
 
 lda = LdaModel(corpus, num_topics=10, id2word=id2word)
 
-temp_file = datapath("noun_model")
+temp_file = datapath("noun_model_2")jhjh
 lda.save(temp_file)
 
 lda = LdaModel.load(temp_file)

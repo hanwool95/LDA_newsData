@@ -1,10 +1,16 @@
-from gensim.models import LdaModel
-from gensim.test.utils import datapath
+import matplotlib.pyplot as plt
+import ruptures as rpt
 
-temp_file = datapath("noun_model")
-lda = LdaModel.load(temp_file)
+# generate signal
+n_samples, dim, sigma = 1000, 3, 4
+n_bkps = 4  # number of breakpoints
+signal, bkps = rpt.pw_constant(n_samples, dim, n_bkps, noise_std=sigma)
 
 
-topics = lda.print_topics(num_words=20)
-for topic in topics:
-    print(topic)
+# detection
+algo = rpt.Pelt(model="rbf").fit(signal)
+result = algo.predict(pen=1)
+
+# display
+rpt.display(signal, bkps, result)
+plt.show()
