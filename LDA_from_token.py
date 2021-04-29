@@ -8,34 +8,69 @@ from gensim import corpora, models
 import gensim
 from gensim.models import LdaModel
 from gensim.test.utils import datapath
+from Data_Pre_processing_by_date import *
 
-print("loading token_words.csv")
-data_word = []
-with codecs.open('noun_token_words_4.csv', 'r') as f:
-    rdr = csv.reader(f)
-    next(rdr)
-    for i, line in enumerate(rdr):
-        data_word.append(line)
-    print("Complete loading")
-
-
-id2word=corpora.Dictionary(data_word)
-id2word.filter_extremes(no_below = 10) #10회 이하로 등장한 단어는 삭제
-texts = data_word
-corpus=[id2word.doc2bow(text) for text in texts]
-print(corpus[1])
-
-lda = LdaModel(corpus, num_topics=10, id2word=id2word)
-
-temp_file = datapath("noun_model_2")
-lda.save(temp_file)
-
-lda = LdaModel.load(temp_file)
+def LDA_model_from_token(text_file_name):
+    token_file_name = text_file_name[:-4] + '.csv'
+    print("loading "+token_file_name)
+    data_word = []
+    with codecs.open(token_file_name, 'r') as f:
+        rdr = csv.reader(f)
+        next(rdr)
+        for i, line in enumerate(rdr):
+            data_word.append(line)
+        print("Complete loading")
 
 
-topics = lda.print_topics(num_words=10)
-for topic in topics:
-    print(topic)
+    id2word=corpora.Dictionary(data_word)
+    id2word.filter_extremes(no_below = 10) #10회 이하로 등장한 단어는 삭제
+    texts = data_word
+    corpus=[id2word.doc2bow(text) for text in texts]
+
+    lda = LdaModel(corpus, num_topics=5, id2word=id2word)
+
+    temp_file = datapath(token_file_name[:-4])
+    lda.save(temp_file)
+
+    lda = LdaModel.load(temp_file)
+
+    topics = lda.print_topics(num_words=10)
+    for topic in topics:
+        print(topic)
+
+standard_time1 = date_list.pop(0)
+file_name1 = making_file_name(standard_time1)
+LDA_model_from_token(file_name1)
+
+standard_time2 = date_list.pop(0)
+file_name2 = making_file_name(standard_time2)
+LDA_model_from_token(file_name2)
+
+standard_time3 = date_list.pop(0)
+file_name3 = making_file_name(standard_time3)
+LDA_model_from_token(file_name3)
+
+standard_time4 = date_list.pop(0)
+file_name4 = making_file_name(standard_time4)
+LDA_model_from_token(file_name4)
+
+standard_time5 = date_list.pop(0)
+file_name5 = making_file_name(standard_time5)
+LDA_model_from_token(file_name5)
+
+standard_time6 = date_list.pop(0)
+file_name6 = making_file_name(standard_time6)
+LDA_model_from_token(file_name6)
+
+standard_time7 = date_list.pop(0)
+file_name7 = making_file_name(standard_time7)
+LDA_model_from_token(file_name7)
+
+standard_time8 = date_list.pop(0)
+file_name8 = making_file_name(standard_time8)
+LDA_model_from_token(file_name8)
+
+
 """
 
 mallet_path = 'mallet-2.0.8/bin/mallet'
