@@ -70,6 +70,10 @@ standard_time8 = date_list.pop(0)
 file_name8 = making_file_name(standard_time8)
 LDA_model_from_token(file_name8)
 
+standard_time9 = date_list.pop(0)
+file_name9 = making_file_name(standard_time9)
+LDA_model_from_token(file_name9)
+
 
 """
 

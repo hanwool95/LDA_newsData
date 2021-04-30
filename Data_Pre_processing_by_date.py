@@ -4,7 +4,8 @@ from datetime import datetime
 
 
 date_list = [datetime(2002, 9, 1, 0, 0), datetime(2005, 8, 1, 0, 0), datetime(2013, 12, 1, 0, 0), datetime(2016, 1, 1, 0, 0),
-             datetime(2016, 11, 1, 0, 0), datetime(2018, 2, 1, 0, 0), datetime(2019, 10, 1, 0, 0), datetime(2021, 3, 1, 0, 0)]
+             datetime(2016, 11, 1, 0, 0), datetime(2018, 2, 1, 0, 0), datetime(2019, 10, 1, 0, 0),
+             datetime(2020, 8, 1, 0, 0), datetime(2021, 3, 1, 0, 0)]
 
 def making_file_name(date):
     file_name = "content" + str(date.year)+ "_" + str(date.month) + ".txt"
@@ -46,7 +47,11 @@ if __name__ == '__main__':
     file_name8 = making_file_name(standard_time8)
     f8 = open(file_name8, 'w')
 
-    with codecs.open('full_data.csv', 'r') as f:
+    standard_time9 = date_list.pop(0)
+    file_name9 = making_file_name(standard_time9)
+    f9 = open(file_name9, 'w')
+
+    with codecs.open('full_data_rev.csv', 'r') as f:
         rdr = csv.reader(f)
         next(rdr)
 
@@ -75,7 +80,10 @@ if __name__ == '__main__':
                     if date < standard_time7:
                         f7.write(data)
                     else:
-                        f8.write(data)
+                        if date < standard_time8:
+                            f8.write(data)
+                        else:
+                            f9.write(data)
 
     f1.close()
     f2.close()
@@ -85,3 +93,4 @@ if __name__ == '__main__':
     f6.close()
     f7.close()
     f8.close()
+    f9.close()

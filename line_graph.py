@@ -5,11 +5,11 @@ import csv, codecs, pickle
 
 from datetime import datetime
 
-"""
+
 dict = {}
 
 #to pickle
-with codecs.open('full_data.csv', 'r') as f:
+with codecs.open('full_data_rev.csv', 'r') as f:
     rdr = csv.reader(f)
     next(rdr)
     for line in rdr:
@@ -32,19 +32,24 @@ with open('date_count.pickle','wb') as fw:
     pickle.dump(sorted_dict, fw)
     print("dumping complete")
 
-"""
-
-with open('date_count.pickle', 'rb') as fr:
+with open('previous/date_count.pickle', 'rb') as fr:
     sorted_dict = pickle.load(fr)
 
-
-f = open('date_count.csv', 'w', newline="")
+f = open('previous/date_count.csv', 'w', newline="")
 wr = csv.writer(f)
 for tuple in sorted_dict:
     wr.writerow([tuple[0], tuple[1]])
 f.close()
 
 #print(sorted_dict)
+
+
+
+"""
+
+
+
+# drawing line graph
 
 x_list = []
 y_list = []
@@ -81,3 +86,5 @@ for i, v in enumerate(x_list):
 plt.legend(['Date', 'count'])
 
 plt.show()
+
+"""

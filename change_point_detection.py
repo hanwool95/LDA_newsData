@@ -11,7 +11,7 @@ import numpy as np
 
 
 
-with open('date_count.pickle', 'rb') as fr:
+with open('previous/date_count.pickle', 'rb') as fr:
     sorted_dict = pickle.load(fr)
 
 #for tuple in sorted_dict:
