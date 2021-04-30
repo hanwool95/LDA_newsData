@@ -10,7 +10,7 @@ import pandas as pd
 import re, pickle, csv
 
 print("opening file")
-with open('full_content_only.txt', 'r', encoding = "utf-8") as f:
+with open('full_content_only.txt', 'r', encoding ="utf-8") as f:
     lines = f.read().splitlines()
 re.sub(r"[\[\]<>~]", ' ', lines[0])
 re.sub(r"['~]", ' ', lines[0])
