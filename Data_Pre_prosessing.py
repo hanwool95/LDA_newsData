@@ -5,7 +5,7 @@ title_only = []
 
 full_content_only = []
 
-with codecs.open('full_data_rev.csv', 'r') as f:
+with codecs.open('full_data_rev3.csv', 'r') as f:
     rdr = csv.reader(f)
     next(rdr)
     for line in rdr:

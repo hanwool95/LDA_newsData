@@ -11,7 +11,7 @@ import numpy as np
 
 
 
-with open('previous/date_count.pickle', 'rb') as fr:
+with open('date_count.pickle', 'rb') as fr:
     sorted_dict = pickle.load(fr)
 
 #for tuple in sorted_dict:
@@ -27,7 +27,7 @@ last_date = "2021.06"
 
 for tuple in sorted_dict:
     if tuple[0] >= start_date and tuple[0] <= last_date:
-        x_obj = datetime.strptime(tuple[0], '%Y.%m')
+        x_obj = datetime.strptime(tuple[0], '%Y-%m')
         x_list.append(x_obj)
         y_list.append(tuple[1])
 

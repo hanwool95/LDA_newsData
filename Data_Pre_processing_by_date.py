@@ -51,7 +51,7 @@ if __name__ == '__main__':
     file_name9 = making_file_name(standard_time9)
     f9 = open(file_name9, 'w')
 
-    with codecs.open('full_data_rev.csv', 'r') as f:
+    with codecs.open('full_data_rev2.csv', 'r') as f:
         rdr = csv.reader(f)
         next(rdr)
 

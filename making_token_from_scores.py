@@ -18,7 +18,11 @@ exception_list = ['있다', '수', '에', '이', '한다', '있습니다', '것�
                   'se', '부산일보', '연합뉴', 'de', 's', 'be', 'with', 'ha', 'en', 'an', 'PR', 'ac', 'ca', 'N', '로', '대한',
                   '등', '를', '위해', '말했', '그러나', '대해', '오후', '이데이일', 'edaily', '합니다' ,'위한', '내년', '올해',
                   '파이낸셜뉴스', '한국경제TV', '는', '의', '머니투데', '하는', '이는', 'this', 'it', 'The', 'that', 'will', 'as', 'by',
-                  'fi', '의', '가', '은', '들', '는', '좀', '잘', '걍', '과', '도', '를', '으로', '자', '에', '와', '한', '하다']
+                  'fi', '의', '가', '은', '들', '는', '좀', '잘', '걍', '과', '도', '를', '으로', '자', '에', '와', '한', '하다',
+                  '등을', '했다', '경우', '을', '또', '등이', '지난', '말했다', '다양', '사용', '머니투데이']
+
+word_dict = {'서비': '서비스', '살처': '살처분', '네트워':'네트워크'}
+
 
 text_file = 'full_content_only.txt'
 
@@ -52,8 +56,11 @@ def content_to_token(text_file_name):
         #flatten을 False로 주어서 [L명사, R조사]형태로 분류하게 만듦.
         pre_list = ltokenizer.tokenize(sent, flatten=False)
         for LR_list in pre_list:
-            if LR_list[0] not in exception_list:
-                conclude_sent.append(LR_list[0])
+            word = LR_list[0]
+            if word in word_dict:
+                word = word_dict[word]
+            if word not in exception_list:
+                conclude_sent.append(word)
         words.append(conclude_sent)
 
     token_file_name = text_file_name[:-4] + '.csv'

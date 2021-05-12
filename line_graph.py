@@ -41,13 +41,6 @@ for tuple in sorted_dict:
     wr.writerow([tuple[0], tuple[1]])
 f.close()
 
-#print(sorted_dict)
-
-
-
-"""
-
-
 
 # drawing line graph
 
@@ -86,5 +79,3 @@ for i, v in enumerate(x_list):
 plt.legend(['Date', 'count'])
 
 plt.show()
-
-"""

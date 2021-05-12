@@ -1,7 +1,7 @@
 from gensim.models import LdaModel
 from gensim.test.utils import datapath
 
-temp_file = datapath("noun_model_2")
+temp_file = datapath("full_content_only")
 lda = LdaModel.load(temp_file)
 
 

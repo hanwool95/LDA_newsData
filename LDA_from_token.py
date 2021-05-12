@@ -27,7 +27,7 @@ def LDA_model_from_token(text_file_name):
     texts = data_word
     corpus=[id2word.doc2bow(text) for text in texts]
 
-    lda = LdaModel(corpus, num_topics=5, id2word=id2word)
+    lda = LdaModel(corpus, num_topics=10, id2word=id2word)
 
     temp_file = datapath(token_file_name[:-4])
     lda.save(temp_file)
