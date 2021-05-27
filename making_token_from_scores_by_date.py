@@ -10,15 +10,8 @@ import pandas as pd
 import re, pickle, csv
 
 from Data_Pre_processing_by_date import *
+from making_token_from_scores import *
 
-exception_list = ['있다', '수', '에', '이', '한다', '있습니다', '것으로', '있는', '것', '할', '및', 'the',
-                  'http', 'https', 'sunday','joins','co','and', 'kr', '고', '것이다', '한', 'is', 'www', 'for', 'a', 'of',
-                  'in', 'on', '중', '더', '대', '통해', '기자', '서울', '뉴시스', '재배포', '금지', '무단', '전재', '연합뉴',
-                  '뉴7', '이번', '구독', '사진', '밝혔다', '저작권자', '네이버', '하지만', '이런', '그', '것이', '것은', 'pr', 'to',
-                  'se', '부산일보', '연합뉴', 'de', 's', 'be', 'with', 'ha', 'en', 'an', 'PR', 'ac', 'ca', 'N', '로', '대한',
-                  '등', '를', '위해', '말했', '그러나', '대해', '오후', '이데이일', 'edaily', '합니다' ,'위한', '내년', '올해',
-                  '파이낸셜뉴스', '한국경제TV', '는', '의', '머니투데', '하는', '이는', 'this', 'it', 'The', 'that', 'will', 'as', 'by',
-                  'fi', '의', '가', '은', '들', '는', '좀', '잘', '걍', '과', '도', '를', '으로', '자', '에', '와', '한', '하다']
 
 
 
@@ -63,43 +56,6 @@ print("loading scores_dictionary")
 with open('noun_scores_dictionary.pickle', 'rb') as fr:
     scores_dictionary = pickle.load(fr)
     print("load complete")
-
-def content_to_token(text_file_name):
-    print("opening file " + text_file_name)
-    with open(text_file_name, 'r', encoding = "utf-8") as f:
-        lines = f.read().splitlines()
-    re.sub(r"[\[\]<>~]", ' ', lines[0])
-    re.sub(r"['~]", ' ', lines[0])
-    re.sub(r'"', ' ', lines[0])
-
-    text = []
-    for line in lines:
-        line = re.sub(r"[\[\]<>~]", ' ', line)
-        line = re.sub(r"['~]", ' ', line)
-        line = re.sub(r'"', ' ', line)
-        line = re.sub('\\W', ' ', line)
-        text.append(line)
-
-    ltokenizer = LTokenizer(scores = scores_dictionary)
-
-    print("making list of words")
-    words = []
-    for sent in text:
-        conclude_sent = []
-        #flatten을 False로 주어서 [L명사, R조사]형태로 분류하게 만듦.
-        pre_list = ltokenizer.tokenize(sent, flatten=False)
-        for LR_list in pre_list:
-            if LR_list[0] not in exception_list:
-                conclude_sent.append(LR_list[0])
-        words.append(conclude_sent)
-
-    token_file_name = text_file_name[:-4] + '.csv'
-
-    f = open(token_file_name, 'w', newline="")
-    wr = csv.writer(f)
-    for word in words:
-        wr.writerow(word)
-    f.close()
 
 content_to_token(file_name1)
 content_to_token(file_name2)

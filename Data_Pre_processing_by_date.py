@@ -3,9 +3,9 @@ import csv, codecs
 from datetime import datetime
 
 
-date_list = [datetime(2002, 9, 1, 0, 0), datetime(2005, 8, 1, 0, 0), datetime(2013, 12, 1, 0, 0), datetime(2016, 1, 1, 0, 0),
-             datetime(2016, 11, 1, 0, 0), datetime(2018, 2, 1, 0, 0), datetime(2019, 10, 1, 0, 0),
-             datetime(2020, 8, 1, 0, 0), datetime(2021, 3, 1, 0, 0)]
+date_list = [datetime(2002, 7, 1, 0, 0), datetime(2005, 11, 1, 0, 0), datetime(2009, 3, 1, 0, 0), datetime(2013, 10, 1, 0, 0),
+             datetime(2015, 11, 1, 0, 0), datetime(2016, 4, 1, 0, 0), datetime(2016, 9, 1, 0, 0),
+             datetime(2017, 12, 1, 0, 0), datetime(2020, 1, 1, 0, 0)]
 
 def making_file_name(date):
     file_name = "content" + str(date.year)+ "_" + str(date.month) + ".txt"
@@ -51,12 +51,12 @@ if __name__ == '__main__':
     file_name9 = making_file_name(standard_time9)
     f9 = open(file_name9, 'w')
 
-    with codecs.open('full_data_rev2.csv', 'r') as f:
+    with codecs.open('full_data_rev3.csv', 'r') as f:
         rdr = csv.reader(f)
         next(rdr)
 
         for line in rdr:
-            date = datetime.strptime(line[2], '%Y.%m.%d.')
+            date = datetime.strptime(line[2], '%Y-%m-%d')
             data = line[5] + "\n"
 
             if date < standard_time4:

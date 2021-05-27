@@ -12,4 +12,5 @@ f = open("LDA_result.csv", 'w', newline="")
 wr = csv.writer(f)
 for topic in topics:
     wr.writerow(topic)
+    print(topic)
 f.close()
