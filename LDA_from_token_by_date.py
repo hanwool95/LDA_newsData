@@ -58,6 +58,8 @@ standard_time5 = date_list.pop(0)
 file_name5 = making_file_name(standard_time5)
 LDA_model_from_token(file_name5)
 
+"""
+
 standard_time6 = date_list.pop(0)
 file_name6 = making_file_name(standard_time6)
 LDA_model_from_token(file_name6)
@@ -74,7 +76,7 @@ standard_time9 = date_list.pop(0)
 file_name9 = making_file_name(standard_time9)
 LDA_model_from_token(file_name9)
 
-
+"""
 """
 
 mallet_path = 'mallet-2.0.8/bin/mallet'

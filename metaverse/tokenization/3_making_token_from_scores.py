@@ -9,8 +9,6 @@ import pandas as pd
 
 import re, pickle, csv
 
-from Data_Pre_processing_by_date import *
-
 exception_list = ['있다', '수', '에', '이', '한다', '있습니다', '것으로', '있는', '것', '할', '및', 'the',
                   'http', 'https', 'sunday','joins','co','and', 'kr', '고', '것이다', '한', 'is', 'www', 'for', 'a', 'of',
                   'in', 'on', '중', '더', '대', '통해', '기자', '서울', '뉴시스', '재배포', '금지', '무단', '전재', '연합뉴',

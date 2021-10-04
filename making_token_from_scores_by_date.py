@@ -35,6 +35,8 @@ standard_time5 = date_list.pop(0)
 file_name5 = making_file_name(standard_time5)
 f5 = open(file_name5, 'r')
 
+"""
+
 standard_time6 = date_list.pop(0)
 file_name6 = making_file_name(standard_time6)
 f6 = open(file_name6, 'r')
@@ -51,6 +53,12 @@ standard_time9 = date_list.pop(0)
 file_name9 = making_file_name(standard_time9)
 f9 = open(file_name9, 'r')
 
+standard_time10 = date_list.pop(0)
+file_name10 = making_file_name(standard_time10)
+f10 = open(file_name10, 'r')
+
+"""
+
 
 print("loading scores_dictionary")
 with open('noun_scores_dictionary.pickle', 'rb') as fr:
@@ -62,11 +70,13 @@ content_to_token(file_name2)
 content_to_token(file_name3)
 content_to_token(file_name4)
 content_to_token(file_name5)
+"""
 content_to_token(file_name6)
 content_to_token(file_name7)
 content_to_token(file_name8)
 content_to_token(file_name9)
-
+content_to_token(file_name10)
+"""
 
 
 f1.close()
@@ -74,10 +84,13 @@ f2.close()
 f3.close()
 f4.close()
 f5.close()
+"""
 f6.close()
 f7.close()
 f8.close()
 f9.close()
+f10.close()
+"""
 
 # 전체로 한 다음에 토픽 보고. 연도 별로 변화하는 것을 본 다음에,
 # 7에서 하면 토픽 이렇게 이룸 붙이고 12로 뽑으면 토픽 이렇게 나올 것 같

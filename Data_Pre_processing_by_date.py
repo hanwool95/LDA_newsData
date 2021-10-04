@@ -3,9 +3,9 @@ import csv, codecs
 from datetime import datetime
 
 
-date_list = [datetime(2002, 7, 1, 0, 0), datetime(2005, 11, 1, 0, 0), datetime(2009, 3, 1, 0, 0), datetime(2013, 10, 1, 0, 0),
-             datetime(2015, 11, 1, 0, 0), datetime(2016, 4, 1, 0, 0), datetime(2016, 9, 1, 0, 0),
-             datetime(2017, 12, 1, 0, 0), datetime(2020, 1, 1, 0, 0)]
+date_list = [datetime(2000, 1, 1, 0, 0), datetime(2006, 1, 1, 0, 0), datetime(2011, 1, 1, 0, 0), datetime(2016, 1, 1, 0, 0),
+             datetime(2021, 3, 1, 0, 0), datetime(2016, 4, 1, 0, 0), datetime(2016, 9, 1, 0, 0),
+             datetime(2017, 12, 1, 0, 0), datetime(2020, 1, 1, 0, 0), datetime(2021, 3, 1, 0, 0)]
 
 def making_file_name(date):
     file_name = "content" + str(date.year)+ "_" + str(date.month) + ".txt"
@@ -34,7 +34,7 @@ if __name__ == '__main__':
     standard_time5 = date_list.pop(0)
     file_name5 = making_file_name(standard_time5)
     f5 = open(file_name5, 'w')
-
+    """
     standard_time6 = date_list.pop(0)
     file_name6 = making_file_name(standard_time6)
     f6 = open(file_name6, 'w')
@@ -50,6 +50,11 @@ if __name__ == '__main__':
     standard_time9 = date_list.pop(0)
     file_name9 = making_file_name(standard_time9)
     f9 = open(file_name9, 'w')
+
+    standard_time10 = date_list.pop(0)
+    file_name10 = making_file_name(standard_time10)
+    f10 = open(file_name10, 'w')
+    """
 
     with codecs.open('full_data_rev3.csv', 'r') as f:
         rdr = csv.reader(f)
@@ -71,6 +76,8 @@ if __name__ == '__main__':
                     else:
                         f4.write(data)
             else:
+                f5.write(data)
+                """
                 if date < standard_time6:
                     if date < standard_time5:
                         f5.write(data)
@@ -83,14 +90,21 @@ if __name__ == '__main__':
                         if date < standard_time8:
                             f8.write(data)
                         else:
-                            f9.write(data)
+                            if date < standard_time9:
+                                f9.write(data)
+                            else:
+                                f10.write(data)
+                """
 
     f1.close()
     f2.close()
     f3.close()
     f4.close()
     f5.close()
+    """
     f6.close()
     f7.close()
     f8.close()
     f9.close()
+    f10.close()
+    """

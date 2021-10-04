@@ -84,3 +84,7 @@ if __name__ == '__main__':
     standard_time9 = date_list.pop(0)
     file_name9 = making_file_name(standard_time9)
     get_topic_from_token(file_name9)
+
+    standard_time10 = date_list.pop(0)
+    file_name10 = making_file_name(standard_time10)
+    get_topic_from_token(file_name10)
