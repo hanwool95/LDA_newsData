@@ -28,19 +28,26 @@ def get_tf_idf(file_name):
     def tfidf(t, d):
         return tf(t,d)* idf(t)
 
-    result = {}
+    tf_result = {}
+    idf_result = {}
 
     for line in docs: # 각 문서에 대해서 아래 명령을 수행
         for word in line:
-            result[word] = [tf(word, line), idf(word)]
+            tf_result[word] = tf(word, line)
+            idf_result[word] = idf(word)
 
-    sorted_result = sorted(result.items(),
+    sorted_result = sorted(tf_result.items(),
                                   reverse=True,
-                                  key=lambda item: item[1][1])
+                                  key=lambda item: item[1])
+
+    result = {}
+    for key, value in sorted_result.items():
+        result[key] = [value, idf_result[key]]
+
 
     f = open(file_name+'result.csv', 'w', newline="")
     wr = csv.writer(f)
-    for key, value in sorted_result:
+    for key, value in result:
         wr.writerow([key, value[0], value[1]])
     f.close()
 
