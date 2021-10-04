@@ -14,7 +14,7 @@ plt.rcParams['axes.unicode_minus'] = False
 dict = {}
 
 #to pickle
-with codecs.open('metaverse.csv', 'r') as f:
+with codecs.open('metaverse_2.csv', 'r') as f:
     rdr = csv.reader(f)
     next(rdr)
     for line in rdr:
